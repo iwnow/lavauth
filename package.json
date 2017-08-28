@@ -18,12 +18,12 @@
   },
   "homepage": "https://github.com/iwnow/lavauth#readme",
   "devDependencies": {
-    "@types/gulp": "^3.8.33",
+    "@types/gulp": "3.8.33",
     "@types/node": "^8.0.25",
-    "del": "^3.0.0",
-    "gulp": "^3.9.1",
-    "gulp-typescript": "^3.2.2",
-    "ts-node": "^3.3.0",
-    "typescript": "^2.4.2"
+    "del": "3.0.0",
+    "gulp": "3.9.1",
+    "gulp-typescript": "3.2.2",
+    "ts-node": "3.3.0",
+    "typescript": "2.4.2"
   }
 }
