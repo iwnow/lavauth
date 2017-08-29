@@ -47,6 +47,11 @@ gulp.task('test', () => {
 			.on('error', (e) => { console.error(e.message); });
 });
 
+gulp.task('test:throw', () => {
+	gulp.src('dist/**/*[sS]pec.js')
+			.pipe(gulpJasmine());
+});
+
 gulp.task('test:watch', () => {
 	const buildWatcher = gulp.watch('dist/**/*spec.js', ['test']);
 	buildWatcher.on('change', (e) => {

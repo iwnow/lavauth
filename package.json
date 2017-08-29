@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "gulp test",
+    "test": "gulp test:throw",
     "dev": "gulp dev",
     "dev-test": "gulp dev-test",
     "dev-serve": "gulp dev-serve",
