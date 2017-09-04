@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/iwnow/lavauth#readme",
   "devDependencies": {
+    "@types/express": "^4.0.37",
     "@types/gulp": "3.8.33",
     "@types/jasmine": "^2.5.54",
     "@types/node": "^8.0.25",
@@ -34,5 +35,8 @@
     "ts-node": "3.3.0",
     "tslint-config-airbnb": "^5.2.1",
     "typescript": "2.4.2"
+  },
+  "dependencies": {
+    "express": "^4.15.4"
   }
 }
