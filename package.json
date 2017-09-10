@@ -6,8 +6,6 @@
   "scripts": {
     "test": "gulp test:throw",
     "dev": "gulp dev",
-    "dev-test": "gulp dev-test",
-    "dev-serve": "gulp dev-serve",
     "serve": "gulp serve"
   },
   "repository": {
@@ -26,12 +24,15 @@
     "@types/gulp": "3.8.33",
     "@types/jasmine": "^2.5.54",
     "@types/node": "^8.0.25",
+    "@types/supertest": "^2.0.3",
     "del": "3.0.0",
     "gulp": "3.9.1",
     "gulp-jasmine": "^2.4.2",
     "gulp-nodemon": "^2.2.1",
     "gulp-typescript": "3.2.2",
     "jasmine": "^2.8.0",
+    "run-sequence": "^2.1.0",
+    "supertest": "^3.0.0",
     "ts-node": "3.3.0",
     "tslint-config-airbnb": "^5.2.1",
     "typescript": "2.4.2"

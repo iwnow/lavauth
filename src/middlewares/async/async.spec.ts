@@ -1,4 +1,4 @@
-import { asyncMiddleware } from './async';
+import { asyncMiddleware } from './';
 
 describe('Async middleware tests', () => {
 
@@ -13,7 +13,7 @@ describe('Async middleware tests', () => {
 		})(req, res, done);
 	});
 
-	it('should error handle', (done) => {
+	it('should error catch in next() callback ', (done) => {
 		const res: any = {};
 		const req: any = {};
 		const middleware = asyncMiddleware(async (req, res, next) => {

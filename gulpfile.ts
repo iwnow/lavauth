@@ -5,6 +5,7 @@ const del = require('del');
 const nodemon = require('gulp-nodemon');
 const jasMine = require('jasmine');
 const gulpJasmine = require('gulp-jasmine');
+const runSequence = require('run-sequence');
 
 const configFile = 'tsconfig.json';
 const tsProject = ts.createProject(configFile);
@@ -12,7 +13,8 @@ const distFolder = 'dist';
 
 const clearBuild = () => del.sync([distFolder]);
 
-gulp.task('build', () => {
+gulp.task('build', (cb) => {
+	//clearBuild();
 	return tsProject.src()
 									.pipe(tsProject())
 									.js.pipe(gulp.dest(distFolder));
@@ -22,13 +24,15 @@ gulp.task('clear-build', () => {
 	return clearBuild();
 });
 
+const onChangeLog = (e) => {
+	let fileName = <string>e.path;
+	fileName = fileName.substr(fileName.indexOf('lavauth'));
+	console.log(`file ${fileName} was ${e.type}, running tasks...`);
+};
+
 gulp.task('build:watch', () => {
 	const buildWatcher = gulp.watch('src/**/*.ts', ['build']);
-	buildWatcher.on('change', (e) => {
-		let fileName = <string>e.path;
-		fileName = fileName.substr(fileName.indexOf('lavauth'));
-		console.log(`file ${fileName} was ${e.type}, running tasks...`);
-	});
+	buildWatcher.on('change', onChangeLog);
 });
 
 gulp.task('serve', () => {
@@ -52,16 +56,11 @@ gulp.task('test:throw', () => {
 			.pipe(gulpJasmine());
 });
 
-gulp.task('test:watch', () => {
-	const buildWatcher = gulp.watch('dist/**/*spec.js', ['test']);
+gulp.task('dev', () => {
+	const buildWatcher = gulp.watch('src/**/*.ts', runSequence('build', 'test'));
 	buildWatcher.on('change', (e) => {
-		let fileName = <string>e.path;
-		fileName = fileName.substr(fileName.indexOf('lavauth'));
-		console.log(`file ${fileName} was ${e.type}, running tasks...\n`);
+		onChangeLog(e);
+		runSequence('build', 'test');
 	});
 });
-
-gulp.task('dev', ['build:watch']);
-gulp.task('dev-serve', ['dev', 'serve']);
-gulp.task('dev-test', ['dev', 'test:watch']);
 
