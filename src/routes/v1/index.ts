@@ -8,6 +8,10 @@ router.get('/user', (req, res) => {
 	});
 });
 
+router.get('/user/:id', (req, res) => {
+	throw new Error('not implemented');
+});
+
 const v1 = express.Router();
 v1.use('/v1', router);
 

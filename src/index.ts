@@ -1,3 +1,6 @@
-import server from './server';
+import app from './app';
 
-server.start();
+const port = 3333;
+
+app.listen(port, () => console.log(`server start at http://localhost:${port}/`));
+

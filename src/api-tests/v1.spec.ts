@@ -1,7 +1,5 @@
-import server from '../server';
+import app from '../app';
 import * as request from 'supertest';
-
-const app = server.app;
 
 describe('API v1 tests', () => {
 
