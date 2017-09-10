@@ -57,6 +57,7 @@ gulp.task('test:throw', () => {
 });
 
 gulp.task('dev', () => {
+	clearBuild();
 	const buildWatcher = gulp.watch('src/**/*.ts', runSequence('build', 'test'));
 	buildWatcher.on('change', (e) => {
 		onChangeLog(e);
