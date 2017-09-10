@@ -1,12 +1,14 @@
 import * as express from 'express';
 import { asyncMiddleware } from './middlewares';
+import { v1 } from './routes';
 
 const app = express();
 
-app.get('/api', (req, res) => {
-	res.send({
-		version: '1.0.0'
-	});
+app.use('/api', v1);
+
+app.use((req, res, next) => {
+	res.status(404);
+	res.end();
 });
 
 app.use((err, req: express.Request, res: express.Response, next: express.NextFunction) => {
